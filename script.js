@@ -32,18 +32,23 @@ function openCGPACalculator(semester) {
 
         const subjectLabel = document.createElement('label');
         subjectLabel.className = 'col-sm-2 col-form-label';
-        subjectLabel.innerText = `${subject}`;
+        subjectLabel.style="display:flex;flex-direction:row;justify-content: space-between;"
+        subjectLabel.innerHTML = `<p style="margin-right:20px;">${subject}</p><p>Credits:${credits}</p>`;
         row.appendChild(subjectLabel);
 
-        const creditsLabel = document.createElement('label');
-        creditsLabel.className = 'col-sm-2 col-form-label';
-        creditsLabel.innerText = `${credits}`;
-        row.appendChild(creditsLabel);
 
         const selectCol = document.createElement('div');
         selectCol.className = 'col-sm-4';
+        selectCol.style="margin-left:15px;";
         const select = document.createElement('select');
         select.className = 'form-control';
+        select.style=`width:275px;select {
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding: 10px;
+        }`;
         select.id = `grade-${index}`;
         Object.keys(GRADE_POINTS).forEach(grade => {
             const option = document.createElement('option');
@@ -61,6 +66,7 @@ function openCGPACalculator(semester) {
         // Add previous CGPA input
         const prevCGPARow = document.createElement('div');
         prevCGPARow.className = 'form-group row';
+        // prevCGPARow.style="background-color:green;display:flex;flex-direction:row;";
 
         const prevCGPALabel = document.createElement('label');
         prevCGPALabel.className = 'col-sm-4 col-form-label';
@@ -165,7 +171,7 @@ function calculateGPA() {
     document.getElementById('resultBody').innerHTML = `<p>GPA: ${real.toFixed(2)}</p><p>CGPA: ${CGPA.toFixed(2)}</p>`;
     $('#resultModal').modal('show');
     document.getElementById("cgpaCalculatorModal").innerHTML=" ";
-    // document.getElementById("cgpaCalculatorModal").innerHTML = `<div class="modal-header">
+    // document.getElementById("cgpaCalculatorModal").innerHTML = <div class="modal-header">
 }
 
 // To prevent scrolling the background content when modal is open
