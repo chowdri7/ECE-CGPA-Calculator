@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1 class="display-4" style="font-weight: bolder;">Select Your Current Semester</h1>
+        <div class="row mt-4 justify-content-center">
+            <!-- Semester Buttons -->
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(1)">Semester 1</button>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(2)">Semester 2</button>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(3)">Semester 3</button>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(4)">Semester 4</button>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(5)">Semester 5</button>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(6)">Semester 6</button>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(7)">Semester 7</button>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <button class="btn btn-primary btn-lg btn-block semester-btn" onclick="openCGPACalculator(8)">Semester 8</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CGPA Calculator Modal -->
+    <div class="modal fade" id="cgpaCalculatorModal" tabindex="-1" role="dialog" aria-labelledby="cgpaCalculatorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cgpaCalculatorModalLabel">CGPA Calculator - Semester <span id="semesterLabel"></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="cgpaForm"></div>
+                    <div class="text-center mt-4">
+                        <h4 id="result"></h4>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" onclick="calculateGPA()">Calculate GPA and CGPA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">CGPA Calculation Result</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="resultBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload(true);alert('All the best.💕');">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
