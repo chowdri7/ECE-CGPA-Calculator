@@ -1,5 +1,5 @@
 body {
-    background: url('https://www.drngpasc.ac.in/images/page_banner/mob_contact.jpg') no-repeat center center fixed;
+    background: url('https://img.freepik.com/premium-photo/floral-border-frame-design_1003030-6174.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699488000&semt=ais') no-repeat center center fixed;
     background-size: cover;
     color: #333;
     overflow-x: hidden;
@@ -49,6 +49,7 @@ h1 {
     .form-group {
         display: flex;
         flex-direction: column;
+        
     }
     .col-form-label {
         padding-top: 0;
@@ -56,6 +57,7 @@ h1 {
     }
     .form-control {
         width: 100%;
+        padding-right: 50px;
     }
     .modal-dialog {
         max-width: 100%;
@@ -64,5 +66,6 @@ h1 {
     .form-group.row {
         display: flex;
         flex-direction: column;
+        /* background-color: green; */
     }
 }
