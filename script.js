@@ -166,7 +166,7 @@ function calculateGPA() {
     });
 
     const GPA = totalPoints / totalCredits;
-    const CGPA = semester === 1 ? GPA : (previousCGPA + GPA) / 2;
+    const CGPA = semester === 1 ? GPA : ((previousCGPA * (semester - 1)) + GPA) / semester;
 
     document.getElementById('resultBody').innerHTML = `<p>GPA: ${real.toFixed(2)}</p><p>CGPA: ${CGPA.toFixed(2)}</p>`;
     $('#resultModal').modal('show');
