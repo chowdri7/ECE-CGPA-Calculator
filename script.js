@@ -11,7 +11,7 @@ const SUBJECTS_BY_SEMESTER = {
 
 const MAX_CGPA = 10;
 const MIN_CGPA = 0;
-const CGPA_STEP = 0.0001;
+const CGPA_STEP = 0.001;
 const MAX_CREDIT = 10;
 const MIN_CREDIT = 0;
 const CREDIT_STEP = 0.5;
@@ -20,7 +20,6 @@ const addPrevSemCGPAForSemOne = false;
 const addCourseForSemOne = false;
 const addArrearCourseForSemOne = false;
 const debugValues = false;
-const showResultPopUPOverCGPAModel = true;
 const includeArrearinGPACalculation = false;
 
 const GRADE_POINTS = { 'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C': 5, 'U': 0 };
@@ -84,25 +83,21 @@ function openSemesterModal(sem) {
     isUserAdded: false
   }));
 
-  // clear arrears
   savedArrearData = [];
-
-  // UI reset
   prevCgpaInput.value = '';
 
   prevCgpaField.classList.toggle('d-none', !addPrevSemCGPAForSemOne && sem === 1);
   addCourseBtn.parentElement.classList.toggle('d-none', !addCourseForSemOne && sem === 1);
-  arrearCheckbox.parentElement.classList.toggle('d-none',includeArrearinGPACalculation || (!addArrearCourseForSemOne && sem === 1));
+  arrearCheckbox.parentElement.classList.toggle('d-none', includeArrearinGPACalculation || (!addArrearCourseForSemOne && sem === 1));
   arrearCheckbox.checked = false;
   arrearControls.classList.add('d-none');
   arrearContainer.innerHTML = '';
   document.getElementById('modalTitle').textContent = `GPA Calculator - Semester ${sem}`;
 
-  // populate the arrear datalist with all courses from prior semesters
   populateArrearDatalist();
 
   renderSavedCourses();
-  
+
   modal.show();
 }
 
@@ -412,7 +407,7 @@ function handleCalculateClick() {
   if (!valid) return;
 
   // ——— GPA Calculation  ———
-  const semesterCredits = includeArrearinGPACalculation? getTotalCreditsInCurrentSemester() : getPassedCreditsInCurrentSemester();
+  const semesterCredits = includeArrearinGPACalculation ? getTotalCreditsInCurrentSemester() : getPassedCreditsInCurrentSemester();
   const semesterPoints = getWeightedSumPredefined() + getWeightedSumUserAdded();
   const GPA = (semesterPoints / semesterCredits) || 0;
 
@@ -422,7 +417,7 @@ function handleCalculateClick() {
   const arrearCredits = getLiveArrearCredits() || 0;
 
   let adjustedOldCredits = oldCredits;
-  if (!includeArrearinGPACalculation){
+  if (!includeArrearinGPACalculation) {
     adjustedOldCredits = oldCredits - arrearCredits;
   }
   const totalOldPoints = oldCGPA * adjustedOldCredits;
@@ -448,11 +443,11 @@ function handleCalculateClick() {
 
   const prevCGPA = oldCGPA;
   if (CGPA > prevCGPA) {
-    cgpaArrow.innerHTML = '&#8593;'; // up arrow
+    cgpaArrow.innerHTML = '&#8593;'; 
     cgpaArrow.className = 'cgpa-arrow up ms-2';
     cgpaArrow.style.color = 'green';
   } else if (CGPA < prevCGPA) {
-    cgpaArrow.innerHTML = '&#8595;'; // down arrow
+    cgpaArrow.innerHTML = '&#8595;'; 
     cgpaArrow.className = 'cgpa-arrow down ms-2';
     cgpaArrow.style.color = 'red';
   } else {
@@ -466,7 +461,7 @@ function handleCalculateClick() {
 
     const dbg_passedCredits = getPassedCreditsInCurrentSemester();
     console.log("Passed credits in current sem:", dbg_passedCredits);
-    
+
     const dbg_CreditsOfCurrentSem = getTotalCreditsInCurrentSemester();
     console.log("Total Credits in current sem:", dbg_CreditsOfCurrentSem);
 
@@ -489,17 +484,17 @@ function handleCalculateClick() {
     console.log("Old CGPA :", dbg_oldCGPA);
 
     let dbg_adjustedOldCredits = dbg_oldCredits;
-    if (!includeArrearinGPACalculation){
-        const dbg_arrearCredits = getLiveArrearCredits();
-        console.log("Total arrear credits :", dbg_arrearCredits);
-        dbg_adjustedOldCredits = dbg_oldCredits - dbg_arrearCredits;
-        console.log("Adjusted old credits (excluding arrears):", dbg_adjustedOldCredits);
+    if (!includeArrearinGPACalculation) {
+      const dbg_arrearCredits = getLiveArrearCredits();
+      console.log("Total arrear credits :", dbg_arrearCredits);
+      dbg_adjustedOldCredits = dbg_oldCredits - dbg_arrearCredits;
+      console.log("Adjusted old credits (excluding arrears):", dbg_adjustedOldCredits);
     }
 
     const dbg_totalOldPoints = dbg_oldCGPA * dbg_adjustedOldCredits;
     console.log("Total semester points from previous sems:", dbg_totalOldPoints);
 
-    const dbg_currentSemPoints = dbg_GPA * (includeArrearinGPACalculation? dbg_CreditsOfCurrentSem : dbg_passedCredits);
+    const dbg_currentSemPoints = dbg_GPA * (includeArrearinGPACalculation ? dbg_CreditsOfCurrentSem : dbg_passedCredits);
     console.log("Points from current sem (GPA * sem credits):", dbg_currentSemPoints);
 
     const dbg_totalAllPoints = dbg_totalOldPoints + dbg_currentSemPoints;
@@ -513,22 +508,13 @@ function handleCalculateClick() {
 
     console.log("====================================");
   }
-
-  // Show the result modal
-  if (showResultPopUPOverCGPAModel){
-    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-    resultModal.show();
-  } else {
-    // Show result pop up after closing cgpa entering field
-    const gpaModalEl = document.getElementById('gpaModal');
-    const gpaModalInstance = bootstrap.Modal.getInstance(gpaModalEl);
-    if (gpaModalInstance) gpaModalInstance.hide();
-
-    const resultModalEl = document.getElementById('resultModal');
-    const resultModal = new bootstrap.Modal(resultModalEl);
-    resultModal.show();
-  }
-
+  const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+  resultModal.show();
+  const gpaModal = document.getElementById('gpaModal');
+  gpaModal.classList.add('modal-blur');
+  resultModal._element.addEventListener('hidden.bs.modal', function () {
+    gpaModal.classList.remove('modal-blur');
+  });
 }
 
 // Helpers for UI functionality
@@ -646,7 +632,7 @@ function getTotalCreditsBeforeSemester(sem) {
 
 function getWeightedSumPredefined() {
   return savedCourseData
-    .filter(e => !e.isUserAdded && e.grade)              
+    .filter(e => !e.isUserAdded && e.grade)
     .map(e => {
       const creds = parseFloat(e.credits) || 0;
       const gp = GRADE_POINTS[e.grade] || 0;
@@ -676,7 +662,7 @@ function getPreviousSemesterCGPA() {
 
 function getWeightedSumUserAdded() {
   return savedCourseData
-    .filter(e => e.isUserAdded && e.grade)              
+    .filter(e => e.isUserAdded && e.grade)
     .map(e => {
       const creds = parseFloat(e.credits) || 0;
       const gp = GRADE_POINTS[e.grade] || 0;
