@@ -421,7 +421,7 @@ function handleCalculateClick() {
   const oldCGPA = getPreviousSemesterCGPA();
   const arrearCredits = getLiveArrearCredits() || 0;
 
-  const adjustedOldCredits = oldCredits;
+  let adjustedOldCredits = oldCredits;
   if (!includeArrearinGPACalculation){
     adjustedOldCredits = oldCredits - arrearCredits;
   }
@@ -488,7 +488,7 @@ function handleCalculateClick() {
     const dbg_oldCGPA = getPreviousSemesterCGPA();
     console.log("Old CGPA :", dbg_oldCGPA);
 
-    const dbg_adjustedOldCredits = dbg_oldCredits;
+    let dbg_adjustedOldCredits = dbg_oldCredits;
     if (!includeArrearinGPACalculation){
         const dbg_arrearCredits = getLiveArrearCredits();
         console.log("Total arrear credits :", dbg_arrearCredits);
