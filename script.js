@@ -1,12 +1,12 @@
 const SUBJECTS_BY_SEMESTER = {
-  1: [["HS3152", 3, "Eng 1"], ["MA3151", 4, "Mat 1"], ["PH3151", 3, "Phy 1"], ["CY3151", 3, "Chem 1"], ["GE3151", 3, "Python 1"], ["GE3171", 2, "py lab"], ["BS3171", 2, "phy chem lab"]],
-  2: [["HS3251", 2, "Eng 2"], ["MA3251", 4, "Mat 2"], ["PH3254", 3, "Phy 2"], ["BE3254", 3, "EIE"], ["GE3251", 4, "Engineering Graphics"], ["EC3251", 4, "Circuit Analysis"], ["GE3271", 2, "Engg Practice Lab"], ["EC3271", 1, "Circuit Lab"]],
-  3: [["MA3355", 4, "Mat 3"], ["CS3353", 3, "C Prog & Data"], ["EC3354", 4, "Signals"], ["EC3353", 3, "EDC"], ["EC3351", 3, "Control Systems"], ["EC3352", 4, "Digital Design"], ["EC3361", 1.5, "EDC Lab"], ["CS3362", 1.5, "C Lab"], ["GE3361", 1, "Prof Dev"]],
-  4: [["EC3452", 3, "Sub A"], ["EC3401", 4, "Sub B"], ["EC3451", 3, "Sub C"], ["EC3492", 4, "Sub D"], ["EC3491", 3, "Sub E"], ["GE3451", 2, "Sub F"], ["EC3461", 1.5, "Sub G"], ["EC3462", 1.5, "Sub H"]],
-  5: [["EC3501", 4, "Sub I"], ["EC3552", 3, "Sub J"], ["EC3551", 3, "Sub K"], ["CEC345", 3, "Sub L"], ["CEC331", 3, "Sub M"], ["CEC354", 3, "Sub N"], ["EC3561", 2, "Sub O"]],
-  6: [["ET3491", 4, "Sub P"], ["CS3491", 4, "Sub Q"], ["CEC371", 3, "Sub R"], ["CEC364", 3, "Sub S"], ["OAS351", 3, "Sub T"], ["CEC333", 3, "Sub U"]],
-  7: [["GE3791", 2, "Sub V"], ["GE3751", 3, "Sub W"], ["CCS361", 3, "Sub X"], ["OMR351", 3, "Sub Y"], ["CRA332", 3, "Sub Z"], ["INTERN", 2, "Intern"]],
-  8: [["Project", 10, "Final Project"]]
+  1: [["HS3152", 3 ,"Eng 1"], ["MA3151", 4 ,"Mat 1"], ["PH3151", 3 ,"Phy 1"], ["CY3151", 3 ,"Chem 1"], ["GE3151", 3 ,"Python 1"], ["GE3171", 2 ,"py lab"], ["BS3171", 2 ,"phy chem lab"]],
+  2: [["HS3251", 2 ,"Eng 2"], ["MA3251", 4,"Mat 2"], ["PH3254", 3,"Phy 2"], ["BE3254", 3 ,"EIE"], ["GE3251", 4,"Enginerring Graphics"], ["EC3251", 4,"Circuit analysis"], ["GE3271", 2 ,"Engg Pratice Lab"], ["EC3271", 1,"Circuit Analysis lab"]],
+  3: [["MA3355", 4,"Mat 3"], ["CS3353", 3,"C prgm & data"], ["EC3354", 4 ,"Signals and system"], ["EC3353", 3,"EDC"], ["EC3351", 3,"Control Systems"], ["EC3352", 4,"Digital system design"], ["EC3361", 1.5,"EDC Lab"], ["CS3362", 1.5,"c & data struct lab"], ["GE3361", 1,"Professional Development"]],
+  4: [["EC3452", 3,"EMF"], ["EC3401", 4,"Netw & Sec"], ["EC3451", 3, "LIC"], ["EC3492", 4,"DSP"], ["EC3491", 3, "Commu.Sys"], ["GE3451", 2, "EVS"], ["EC3461", 1.5,"Commu.Sys Lab"], ["EC3462", 1.5, "LIC Lab"]],
+  5: [["EC3501", 4,"Wireless Comm"], ["EC3552", 3,"VLSI"], ["EC3551", 3,"TLRF"], ["CEC345", 3,"OCN"], ["CEC331", 3,"4G/5G"], ["CEC354", 3,"SDN"], ["EC3561", 2,"VLSI Lab"]],
+  6: [["ET3491", 4,"Embedded Sys & IOT Design"], ["CS3491", 4,"AIML"], ["CEC371", 3,"Space Science"], ["CEC364", 3,"WBN"], ["OAS351", 3,"MIMO"], ["CEC333", 3,"AWC"]],
+  7: [["GE3791", 2,"HVE"], ["GE3751", 3,"POM"], ["CCS361", 3,"RPA"], ["OMR351", 3,"Mechatronics"], ["CRA332", 3,"Drone Tech"], ["EC3711", 2,"Internship"]],
+  8: [["Project", 10,"Project"]]
 };
 
 const GRADE_POINTS = { 'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C': 5, 'U': 0 };
